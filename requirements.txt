@@ -2,5 +2,5 @@ tweepy
 requests
 datetime
 bs4
-threading
+Timer
 Flask
