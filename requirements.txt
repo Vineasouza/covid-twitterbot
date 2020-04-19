@@ -1,0 +1,7 @@
+tweepy
+requests
+datetime
+os
+bs4
+threading
+Flask
