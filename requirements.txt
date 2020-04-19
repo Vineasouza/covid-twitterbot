@@ -4,3 +4,4 @@ datetime
 bs4
 Timer
 Flask
+settings
