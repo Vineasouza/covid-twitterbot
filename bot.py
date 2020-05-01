@@ -37,13 +37,13 @@ def tweet():
     #getting date
     now = datetime.datetime.now()
 
-    api.update_status("--" + now.strftime("%Y-%m-%d %H:%M:%S") + "--" + "\nTotal Casos: "+ data[0].text.strip() + "\nTotal Mortes: " + data[1].text.strip () + "\nTotal Recuperados: " + data[2].text.strip())
+    api.update_status("--⏱" + now.strftime("%Y-%m-%d %H:%M:%S") + "🇧🇷--" + "\nTotal Casos: "+ data[0].text.strip() + "\nTotal Mortes: " + data[1].text.strip () + "\nTotal Recuperados: " + data[2].text.strip())
 
     print("tweetado " + now.strftime("%Y-%m-%d %H:%M:%S"))
 
-    Timer(30.0, tweet).start()
+    Timer(7200.0, tweet).start()
 
-Timer(30.0, tweet).start()
+Timer(7200.0, tweet).start()
 
 
 if __name__ == "__main__":
