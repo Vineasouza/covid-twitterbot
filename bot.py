@@ -41,9 +41,9 @@ def tweet():
 
     print("tweetado " + now.strftime("%Y-%m-%d %H:%M:%S"))
 
-    Timer(10800.0, tweet).start()
+    Timer(30.0, tweet).start()
 
-Timer(10800.0, tweet).start()
+Timer(30.0, tweet).start()
 
 
 if __name__ == "__main__":
