@@ -45,7 +45,7 @@ def tweet():
 
     api.update_status("--" + nowtime.strftime("%Y-%m-%d %H:%M") + "--" + "\nTotal Casos: 🇧🇷 "+ data[0].text.strip() + " // 🌎 " + data2[0].text.strip() + "\nTotal Mortes: 🇧🇷 " + data[1].text.strip() + " // 🌎 " + data2[1].text.strip() + "\nTotal Recuperados: 🇧🇷 " + data[2].text.strip()+ " // 🌎 " + data2[2].text.strip())
 
-    print("tweetado " + now.strftime("%Y-%m-%d %H:%M"))
+    print("tweetado " + nowtime.strftime("%Y-%m-%d %H:%M"))
 
     Timer(5400.0, tweet).start()
 
