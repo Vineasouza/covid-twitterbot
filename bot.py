@@ -25,7 +25,7 @@ api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
 @app.route("/")
 # tweet stats
-def tweet():
+def tweet1():
     #getting date
     now = datetime.datetime.now()
     fuso_horario = timezone('America/Sao_Paulo')
@@ -43,14 +43,35 @@ def tweet():
     s2 = BeautifulSoup(r2.text,"html.parser")
     data2 = s2.find_all("div",class_ = "maincounter-number")
 
-    api.update_status("--" + nowtime.strftime("%Y-%m-%d %H:%M") + "--" + "\nTotal Casos: 🇧🇷 "+ data[0].text.strip() + " // 🌎 " + data2[0].text.strip() + "\nTotal Mortes: 🇧🇷 " + data[1].text.strip() + " // 🌎 " + data2[1].text.strip() + "\nTotal Recuperados: 🇧🇷 " + data[2].text.strip()+ " // 🌎 " + data2[2].text.strip())
+    api.update_status("--" + nowtime.strftime("%Y-%m-%d %H:%M:%S") + "--" + "\n\nTotal Casos: 🇧🇷 "+ data[0].text.strip() + " // 🌎 " + data2[0].text.strip() + "\nTotal Mortes: 🇧🇷 " + data[1].text.strip() + " // 🌎 " + data2[1].text.strip() + "\nTotal Recuperados: 🇧🇷 " + data[2].text.strip()+ " // 🌎 " + data2[2].text.strip())
 
-    print("tweetado " + nowtime.strftime("%Y-%m-%d %H:%M"))
+    print("tweetado1" + nowtime.strftime("%Y-%m-%d %H:%M"))
 
-    Timer(5400.0, tweet).start()
+    Timer(600.0, tweet2).start()
+
+def tweet2():
+    #getting date
+    now = datetime.datetime.now()
+    fuso_horario = timezone('America/Sao_Paulo')
+    nowtime = now.astimezone(fuso_horario)
+
+    #getting data
+    url = "https://www.worldometers.info/coronavirus/country/brazil/"
+    r = requests.get(url)
+    s = BeautifulSoup(r.text,"html.parser")
+    data_name = s.find_all("div",class_ = "number-table-main")
+    data_name2 = s.find_all("span",class_ = "number-table")
+
+    api.update_status("--" + nowtime.strftime("%Y-%m-%d %H:%M:%S") + "--" + "\n\nCasos ativos 🇧🇷\nAtualmente infectados: " + data_name[0].text.strip() + "\nEm condições suaves: " + data_name2[0].text.strip() + " (" + data_name2[0].next_sibling.next_sibling.text.strip() + "%)\nSério ou Crítico: " + data_name2[1].text.strip() + " (" + data_name2[1].next_sibling.next_sibling.text.strip() + "%)\n\nCasos fechados 🇧🇷\nCasos que tiveram um resultado: " + data_name[1].text.strip() + "\nRecuperados: " + data_name2[2].text.strip() + " (" + data_name2[2].next_sibling.next_sibling.text.strip() + "%)\nMortos: " + data_name2[3].text.strip() + " (" + data_name2[3].next_sibling.next_sibling.text.strip() + "%)")
+
+    print("tweetado2" + nowtime.strftime("%Y-%m-%d %H:%M"))
+
+    Timer(5400.0, tweet1).start()
+
+def tweet():
+    tweet1()
 
 Timer(5400.0, tweet).start()
-
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5002))
