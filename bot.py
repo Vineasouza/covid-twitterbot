@@ -47,7 +47,7 @@ def tweet1():
 
     print("tweetado1" + nowtime.strftime("%Y-%m-%d %H:%M"))
 
-    Timer(600.0, tweet2).start()
+    Timer(300.0, tweet2).start()
 
 def tweet2():
     #getting date
@@ -66,12 +66,12 @@ def tweet2():
 
     print("tweetado2" + nowtime.strftime("%Y-%m-%d %H:%M"))
 
-    Timer(5400.0, tweet1).start()
+    Timer(10800.0, tweet1).start()
 
 def tweet():
     tweet1()
 
-Timer(5400.0, tweet).start()
+Timer(10800.0, tweet).start()
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5002))
