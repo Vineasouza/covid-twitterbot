@@ -1,3 +1,4 @@
+import os
 import tweepy
 import settings
 import requests
@@ -11,10 +12,10 @@ from flask import Flask
 app = Flask(__name__)
 
 # keys de validação
-CONSUMER_KEY = settings.ENV['CONSUMER_KEY']
-CONSUMER_SECRET = settings.ENV['CONSUMER_SECRET']
-ACCESS_KEY = settings.ENV['ACCESS_KEY']
-ACCESS_SECRET = settings.ENV['ACCESS_SECRET']
+CONSUMER_KEY = os.environ.get('CONSUMER_KEY')
+CONSUMER_SECRET = os.environ.get('CONSUMER_SECRET')
+ACCESS_KEY = os.environ.get('ACCESS_KEY')
+ACCESS_SECRET = os.environ.get('ACCESS_SECRET')
 
 # Authenticate to Twitter
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
