@@ -1,6 +1,5 @@
 import os
 import tweepy
-import settings
 import requests
 import datetime 
 import os
