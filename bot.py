@@ -72,7 +72,7 @@ def tweet2():
 def tweet():
     tweet1()
 
-Timer(10.0, tweet).start()
+Timer(10800.0, tweet).start()
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5002))
